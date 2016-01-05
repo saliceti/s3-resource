@@ -49,12 +49,13 @@ var _ = Describe("check", func() {
 		BeforeEach(func() {
 			checkRequest = check.CheckRequest{
 				Source: s3resource.Source{
-					AccessKeyID:     accessKeyID,
-					SecretAccessKey: secretAccessKey,
-					Bucket:          versionedBucketName,
-					RegionName:      regionName,
-					Regexp:          "some-regex",
-					VersionedFile:   "some-file",
+					AccessKeyID:       accessKeyID,
+					SecretAccessKey:   secretAccessKey,
+					Bucket:            versionedBucketName,
+					RegionName:        regionName,
+					Regexp:            "some-regex",
+					VersionedFile:     "some-file",
+					CredentialsSource: credentialsSource,
 				},
 				Version: s3resource.Version{},
 			}
@@ -78,10 +79,11 @@ var _ = Describe("check", func() {
 			BeforeEach(func() {
 				checkRequest = check.CheckRequest{
 					Source: s3resource.Source{
-						AccessKeyID:     accessKeyID,
-						SecretAccessKey: secretAccessKey,
-						Bucket:          bucketName,
-						RegionName:      regionName,
+						AccessKeyID:       accessKeyID,
+						SecretAccessKey:   secretAccessKey,
+						Bucket:            bucketName,
+						RegionName:        regionName,
+						CredentialsSource: credentialsSource,
 					},
 					Version: s3resource.Version{},
 				}
@@ -171,10 +173,11 @@ var _ = Describe("check", func() {
 			BeforeEach(func() {
 				checkRequest = check.CheckRequest{
 					Source: s3resource.Source{
-						AccessKeyID:     accessKeyID,
-						SecretAccessKey: secretAccessKey,
-						Bucket:          versionedBucketName,
-						RegionName:      regionName,
+						AccessKeyID:       accessKeyID,
+						SecretAccessKey:   secretAccessKey,
+						Bucket:            versionedBucketName,
+						RegionName:        regionName,
+						CredentialsSource: credentialsSource,
 					},
 					Version: s3resource.Version{},
 				}
@@ -312,10 +315,11 @@ var _ = Describe("check", func() {
 			BeforeEach(func() {
 				checkRequest = check.CheckRequest{
 					Source: s3resource.Source{
-						AccessKeyID:     accessKeyID,
-						SecretAccessKey: secretAccessKey,
-						Bucket:          bucketName,
-						RegionName:      regionName,
+						AccessKeyID:       accessKeyID,
+						SecretAccessKey:   secretAccessKey,
+						Bucket:            bucketName,
+						RegionName:        regionName,
+						CredentialsSource: credentialsSource,
 					},
 				}
 			})
@@ -473,10 +477,11 @@ var _ = Describe("check", func() {
 			BeforeEach(func() {
 				checkRequest = check.CheckRequest{
 					Source: s3resource.Source{
-						AccessKeyID:     accessKeyID,
-						SecretAccessKey: secretAccessKey,
-						Bucket:          versionedBucketName,
-						RegionName:      regionName,
+						AccessKeyID:       accessKeyID,
+						SecretAccessKey:   secretAccessKey,
+						Bucket:            versionedBucketName,
+						RegionName:        regionName,
+						CredentialsSource: credentialsSource,
 					},
 				}
 			})

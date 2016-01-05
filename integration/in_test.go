@@ -59,12 +59,13 @@ var _ = Describe("in", func() {
 		BeforeEach(func() {
 			inRequest = in.InRequest{
 				Source: s3resource.Source{
-					AccessKeyID:     accessKeyID,
-					SecretAccessKey: secretAccessKey,
-					Bucket:          versionedBucketName,
-					RegionName:      regionName,
-					Regexp:          "some-regex",
-					VersionedFile:   "some-file",
+					AccessKeyID:       accessKeyID,
+					SecretAccessKey:   secretAccessKey,
+					Bucket:            versionedBucketName,
+					RegionName:        regionName,
+					Regexp:            "some-regex",
+					VersionedFile:     "some-file",
+					CredentialsSource: credentialsSource,
 				},
 				Version: s3resource.Version{},
 			}
@@ -88,11 +89,12 @@ var _ = Describe("in", func() {
 			directoryPrefix = "in-request-files"
 			inRequest = in.InRequest{
 				Source: s3resource.Source{
-					AccessKeyID:     accessKeyID,
-					SecretAccessKey: secretAccessKey,
-					Bucket:          bucketName,
-					RegionName:      regionName,
-					Regexp:          filepath.Join(directoryPrefix, "some-file-(.*)"),
+					AccessKeyID:       accessKeyID,
+					SecretAccessKey:   secretAccessKey,
+					Bucket:            bucketName,
+					RegionName:        regionName,
+					Regexp:            filepath.Join(directoryPrefix, "some-file-(.*)"),
+					CredentialsSource: credentialsSource,
 				},
 				Version: s3resource.Version{
 					Path: filepath.Join(directoryPrefix, "some-file-2"),
@@ -188,11 +190,12 @@ var _ = Describe("in", func() {
 			directoryPrefix = "in-request-files-versioned"
 			inRequest = in.InRequest{
 				Source: s3resource.Source{
-					AccessKeyID:     accessKeyID,
-					SecretAccessKey: secretAccessKey,
-					Bucket:          versionedBucketName,
-					RegionName:      regionName,
-					VersionedFile:   filepath.Join(directoryPrefix, "some-file"),
+					AccessKeyID:       accessKeyID,
+					SecretAccessKey:   secretAccessKey,
+					Bucket:            versionedBucketName,
+					RegionName:        regionName,
+					VersionedFile:     filepath.Join(directoryPrefix, "some-file"),
+					CredentialsSource: credentialsSource,
 				},
 				Version: s3resource.Version{},
 			}

@@ -25,6 +25,7 @@ func main() {
 		request.Source.SecretAccessKey,
 		request.Source.RegionName,
 		request.Source.Endpoint,
+		request.Source.CredentialsSource,
 	)
 	if err != nil {
 		s3resource.Fatal("building S3 client", err)

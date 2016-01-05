@@ -60,13 +60,14 @@ var _ = Describe("out", func() {
 		BeforeEach(func() {
 			outRequest = out.OutRequest{
 				Source: s3resource.Source{
-					AccessKeyID:     accessKeyID,
-					SecretAccessKey: secretAccessKey,
-					Bucket:          versionedBucketName,
-					RegionName:      regionName,
-					Regexp:          "some-regex",
-					VersionedFile:   "some-file",
-					Endpoint:        endpoint,
+					AccessKeyID:       accessKeyID,
+					SecretAccessKey:   secretAccessKey,
+					Bucket:            versionedBucketName,
+					RegionName:        regionName,
+					Regexp:            "some-regex",
+					VersionedFile:     "some-file",
+					CredentialsSource: credentialsSource,
+					Endpoint:          endpoint,
 				},
 			}
 
@@ -85,11 +86,12 @@ var _ = Describe("out", func() {
 		BeforeEach(func() {
 			outRequest := out.OutRequest{
 				Source: s3resource.Source{
-					AccessKeyID:     accessKeyID,
-					SecretAccessKey: secretAccessKey,
-					Bucket:          bucketName,
-					RegionName:      regionName,
-					Endpoint:        endpoint,
+					AccessKeyID:       accessKeyID,
+					SecretAccessKey:   secretAccessKey,
+					Bucket:            bucketName,
+					RegionName:        regionName,
+					Endpoint:          endpoint,
+					CredentialsSource: credentialsSource,
 				},
 				Params: out.Params{
 					File: "glob-*",
@@ -130,11 +132,12 @@ var _ = Describe("out", func() {
 
 				outRequest := out.OutRequest{
 					Source: s3resource.Source{
-						AccessKeyID:     accessKeyID,
-						SecretAccessKey: secretAccessKey,
-						Bucket:          bucketName,
-						RegionName:      regionName,
-						Endpoint:        endpoint,
+						AccessKeyID:       accessKeyID,
+						SecretAccessKey:   secretAccessKey,
+						Bucket:            bucketName,
+						RegionName:        regionName,
+						Endpoint:          endpoint,
+						CredentialsSource: credentialsSource,
 					},
 					Params: out.Params{
 						File: "glob-*",
@@ -188,11 +191,12 @@ var _ = Describe("out", func() {
 
 				outRequest := out.OutRequest{
 					Source: s3resource.Source{
-						AccessKeyID:     accessKeyID,
-						SecretAccessKey: secretAccessKey,
-						Bucket:          bucketName,
-						RegionName:      regionName,
-						Endpoint:        endpoint,
+						AccessKeyID:       accessKeyID,
+						SecretAccessKey:   secretAccessKey,
+						Bucket:            bucketName,
+						RegionName:        regionName,
+						Endpoint:          endpoint,
+						CredentialsSource: credentialsSource,
 					},
 					Params: out.Params{
 						From: "file-to-upload",
@@ -241,12 +245,13 @@ var _ = Describe("out", func() {
 
 				outRequest := out.OutRequest{
 					Source: s3resource.Source{
-						AccessKeyID:     accessKeyID,
-						SecretAccessKey: secretAccessKey,
-						Bucket:          bucketName,
-						RegionName:      regionName,
-						VersionedFile:   filepath.Join(directoryPrefix, "file-to-upload"),
-						Endpoint:        endpoint,
+						AccessKeyID:       accessKeyID,
+						SecretAccessKey:   secretAccessKey,
+						Bucket:            bucketName,
+						RegionName:        regionName,
+						VersionedFile:     filepath.Join(directoryPrefix, "file-to-upload"),
+						Endpoint:          endpoint,
+						CredentialsSource: credentialsSource,
 					},
 					Params: out.Params{
 						From: "file-to-upload-local",
@@ -291,12 +296,13 @@ var _ = Describe("out", func() {
 
 				outRequest := out.OutRequest{
 					Source: s3resource.Source{
-						AccessKeyID:     accessKeyID,
-						SecretAccessKey: secretAccessKey,
-						Bucket:          versionedBucketName,
-						RegionName:      regionName,
-						VersionedFile:   filepath.Join(directoryPrefix, "file-to-upload"),
-						Endpoint:        endpoint,
+						AccessKeyID:       accessKeyID,
+						SecretAccessKey:   secretAccessKey,
+						Bucket:            versionedBucketName,
+						RegionName:        regionName,
+						VersionedFile:     filepath.Join(directoryPrefix, "file-to-upload"),
+						Endpoint:          endpoint,
+						CredentialsSource: credentialsSource,
 					},
 					Params: out.Params{
 						From: "file-to-upload-local",
@@ -348,11 +354,12 @@ var _ = Describe("out", func() {
 
 				outRequest := out.OutRequest{
 					Source: s3resource.Source{
-						AccessKeyID:     accessKeyID,
-						SecretAccessKey: secretAccessKey,
-						Bucket:          versionedBucketName,
-						RegionName:      regionName,
-						Endpoint:        endpoint,
+						AccessKeyID:       accessKeyID,
+						SecretAccessKey:   secretAccessKey,
+						Bucket:            versionedBucketName,
+						RegionName:        regionName,
+						Endpoint:          endpoint,
+						CredentialsSource: credentialsSource,
 					},
 					Params: out.Params{
 						From: "file-to-upload",
