@@ -39,6 +39,32 @@ type s3client struct {
 	progressOutput io.Writer
 }
 
+func validateCredentials(
+	accessKey string,
+	secretKey string,
+	credentialsSource string,
+) error {
+	if credentialsSource != "profile" &&
+		credentialsSource != "static" &&
+		credentialsSource != "anonymous" {
+		return errors.New(
+			"Unknown credentials_source '" + credentialsSource + "'")
+	}
+
+	if credentialsSource == "static" &&
+		(accessKey == "" || secretKey == "") {
+		return errors.New(
+			"Must use access_key_id and secret_access_key with static credentials_source")
+	}
+
+	if credentialsSource == "profile" && accessKey != "" {
+		return errors.New(
+			"Can't use access_key_id and secret_access_key" +
+				"with profile credentials_source")
+	}
+	return nil
+}
+
 func NewS3Client(
 	progressOutput io.Writer,
 	accessKey string,
@@ -49,7 +75,15 @@ func NewS3Client(
 ) (S3Client, error) {
 	var creds *credentials.Credentials
 
-	if credentialsSource == "env_or_profile" {
+	if credentialsSource == "" {
+		credentialsSource = "static"
+	}
+	err := validateCredentials(accessKey, secretKey, credentialsSource)
+	if err != nil {
+		return nil, err
+	}
+
+	if credentialsSource == "profile" {
 		creds = credentials.NewCredentials(
 			&ec2rolecreds.EC2RoleProvider{
 				Client: ec2metadata.New(session.New()),

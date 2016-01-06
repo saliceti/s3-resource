@@ -62,7 +62,7 @@ var _ = SynchronizedBeforeSuite(func() []byte {
 	inPath = sd.InPath
 	outPath = sd.OutPath
 
-	if credentialsSource != "env_or_profile" {
+	if credentialsSource != "profile" {
 		Ω(accessKeyID).ShouldNot(BeEmpty(), "must specify $S3_TESTING_ACCESS_KEY_ID")
 		Ω(secretAccessKey).ShouldNot(BeEmpty(), "must specify $S3_TESTING_SECRET_ACCESS_KEY")
 	}
